@@ -71,7 +71,7 @@ player=input("Enter your name : ")
 console = Console()
 while (True):
     system('clear')
-    console.print("Hello {}, Pls carefully see the placeholder for each cell. The 1-9 numbers will be your next choices.".format(player), style="bold red")
+    console.print("Hello {}, Welcome to Tic Tac Toe.\n\nYou know the game already just carefully see the placeholder for each cell.\nThe 1-9 numbers will be your next choices.\nChoose carefully\n\n".format(player), style="bold red")
     print("1  | 2 |  3 ")
     print("-----------")
     print("4  | 5 |  6 ")
@@ -80,9 +80,9 @@ while (True):
 
     console.print("\nLet the computer start or Would you like to start this {}? Y=Yes".format(player), style="bold red")
     choice=input()
-    print("Choice - {}".format(choice))
+    print("\nYour Choice - {}".format(choice))
     if choice.upper() == 'Y':
-        print("Would you like to use X or O")
+        print("\nWould you like to use X or O")
         playersign=input()
         playersign = playersign.upper()
     else:
