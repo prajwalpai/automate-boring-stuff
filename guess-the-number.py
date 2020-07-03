@@ -5,7 +5,9 @@ actualnum = randint(0, 20)
 
 for attempt in range(1, 7):
     num = int(input ("Guess the  number :"))
-    if num > actualnum:
+    if num > 20:
+        print ('Bro! That is not within 1-20')
+    elif num > actualnum:
         print ("The number is smaller than your guess")
     elif num < actualnum:
         print("The number is Greater than your guess")
