@@ -67,47 +67,56 @@ def checkwin():
 
 
 player=input("Enter your name : ")
-system('clear')
+
 console = Console()
-console.print("Hello {}, Pls carefully see the placeholder for each cell. The 1-9 numbers will be your next choices.".format(player), style="bold red")
-print("1  | 2 |  3 ")
-print("-----------")
-print("4  | 5 |  6 ")
-print("-----------")
-print("7  | 8 |  9 ")
+while (True):
+    system('clear')
+    console.print("Hello {}, Pls carefully see the placeholder for each cell. The 1-9 numbers will be your next choices.".format(player), style="bold red")
+    print("1  | 2 |  3 ")
+    print("-----------")
+    print("4  | 5 |  6 ")
+    print("-----------")
+    print("7  | 8 |  9 ")
 
-console.print("\nLet the computer start or Would you like to start this {}? Y=Yes".format(player), style="bold red")
-choice=input()
-print("Choice - {}".format(choice))
-if choice.upper() == 'Y':
-    print("Would you like to use X or O")
-    playersign=input()
-    playersign = playersign.upper()
-else:
-    print("{} dont want to start, so Computer is starting ".format(player))
-    playersign='X'
+    console.print("\nLet the computer start or Would you like to start this {}? Y=Yes".format(player), style="bold red")
+    choice=input()
+    print("Choice - {}".format(choice))
+    if choice.upper() == 'Y':
+        print("Would you like to use X or O")
+        playersign=input()
+        playersign = playersign.upper()
+    else:
+        print("{} dont want to start, so Computer is starting ".format(player))
+        playersign='X'
 
-if playersign == 'X':
-    compsign='O'
-else:
-    compsign='X'
+    if playersign == 'X':
+        compsign='O'
+    else:
+        compsign='X'
 
-remainingchoice=[1,2,3,4,5,6,7,8,9]
-while remainingchoice :
-    print("The Valid Choices are : {}".format(remainingchoice))
-    #console.print("\nThe Valid Choices are : {}".format(remainingchoice), style="green")
-    playerchoice = int(input("Enter the position you choose {} : ".format(player)))
-    while playerchoice not in remainingchoice:
-        playerchoice = int(input("Invalid Choice. Enter the position you choose {} : ".format(player)))
-    board[playerchoice-1]=playersign
-    remainingchoice.remove(playerchoice)
-    printboard()
-    if (checkwin()):
-        console.print("\n\n:smiley: Brilliant Move!! You won {} :thumbs_up:\n\n".format(player), style="bold cyan")
+    remainingchoice=[1,2,3,4,5,6,7,8,9]
+    while remainingchoice :
+        print("The Valid Choices are : {}".format(remainingchoice))
+        #console.print("\nThe Valid Choices are : {}".format(remainingchoice), style="green")
+        playerchoice = int(input("\nEnter the position you choose {} : ".format(player)))
+        while playerchoice not in remainingchoice:
+            playerchoice = int(input("Invalid Choice. Enter the position you choose {} : ".format(player)))
+        board[playerchoice-1]=playersign
+        remainingchoice.remove(playerchoice)
+        printboard()
+        if (checkwin()):
+            console.print("\n\n:smiley:  Brilliant Move!! You won {}  :thumbs_up:\n\n".format(player), style="bold cyan")
+            break
+        computerplay()
+        if (checkwin()):
+            console.print("\n\n:pile_of_poo:  The house always wins! Sorry {} :thumbs_down:\n\n".format(player), style="bold red")
+            break
+
+    if not checkwin():
+        print("That was a good game {} but it is a Tie".format(player))
+
+    console.print("Want to play again {}?".format(player), style="bold red")
+    choice=input("Y/N : ")
+    if not choice == 'Y':
         exit()
-    computerplay()
-    if (checkwin()):
-        console.print("\n\n:pile_of_poo: The house always wins! Sorry {}:thumbs_down:\n\n".format(player), style="bold red")
-        exit()
 
-print("That was a good game {} but it is a Tie".format(player))
